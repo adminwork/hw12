@@ -15,7 +15,7 @@ require_once 'dbconnect.php';
     <p><input placeholder="Username" name="username"></p>
     <p><select name="option">
             <option selected disabled>Option</option>
-            <option value="file">File</option>
+            <option value="files">File</option>
             <option value="email">E-mail</option>
         </select></p>
     <p><input placeholder="Name or Login" name="name"></p>

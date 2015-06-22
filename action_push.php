@@ -68,37 +68,30 @@ class writeInDB extends  DbConnect
 
     function __construct()
     {
+        $this->nameTables = $_POST['option'];
         $this->name = $_POST['name'];
         $this->text = $_POST['text'];
         $this->username = $_POST['username'];
 
         parent:: __construct();
+
         $result = 'INSERT INTO users(id, username) VALUES ("", "' . $this->username . '")';
         $queryResult = $this->runQuery($result);
     }
 
-    function writeEmailsInDB()
+    function writeInDBB()
     {
-        $result = 'INSERT INTO emails(id, login, text) VALUES ("", "' . $this->name . '", "' . $this->text . '")';
+        if ($this->nameTables == 'files') {
+            $peremen = "filename";
+        }else {$peremen = "login";}
+
+        $result = 'INSERT INTO  "' . $this->nameTables . '"(id, "' .$peremen . '", text) VALUES ("", "' . $this->name . '", "' . $this->text . '")';
         $queryResult = $this->runQuery($result);
 
         if ($queryResult == 'TRUE') {
-            echo " You have successfully emails writing in DB!";
+            echo " You have successfully " . $this->nameTables ." writing in DB!";
         } else {
             echo "Error! You are emails not writing in DB.</a>";
-        }
-    }
-
-    function writeFilesInDB()
-    {
-
-        $result = 'INSERT INTO files(id, filename, text) VALUES ("", "' . $this->name . '", "' . $this->text . '")';
-        $queryResult = $this->runQuery($result);
-
-        if ($queryResult == 'TRUE') {
-            echo "You have successfully file writing in DB!";
-        } else {
-            echo "Error! You are not created file.</a>";
         }
     }
 }
@@ -111,16 +104,16 @@ if ($_POST['option'] == 'email') {
     $obj->run($text);
     echo "E-mail send!";
     $objregistration = new writeInDB();
-    $objregistration->writeEmailsInDB();
+    $objregistration->writeInDBB();
 }
-elseif ($_POST['option'] == 'file') {
+elseif ($_POST['option'] == 'files') {
     $obj = new WorkWithFiles();
     $obj->setText($text);
     $obj->setFiles($filename);
     $obj->setUsername($username);
     $obj->run($text);
     $objregistration = new writeInDB();
-    $objregistration->writeFilesInDB();
+    $objregistration->writeInDBB();
     echo "File is created!";
 }
 else echo "Enter option";
