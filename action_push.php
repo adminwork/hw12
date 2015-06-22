@@ -73,14 +73,14 @@ class writeInDB extends  DbConnect
         $this->username = $_POST['username'];
 
         parent:: __construct();
-        $this -> result = 'INSERT INTO users(id, username) VALUES ("", "' . $this->username . '")';
-        $queryResult = $this -> conn->query($this -> result);
+        $result = 'INSERT INTO users(id, username) VALUES ("", "' . $this->username . '")';
+        $queryResult = $this->runQuery($result);
     }
 
     function writeEmailsInDB()
     {
-        $this -> result = 'INSERT INTO emails(id, login, text) VALUES ("", "' . $this->name . '", "' . $this->text . '")';
-        $queryResult = $this -> conn->query($this -> result);
+        $result = 'INSERT INTO emails(id, login, text) VALUES ("", "' . $this->name . '", "' . $this->text . '")';
+        $queryResult = $this->runQuery($result);
 
         if ($queryResult == 'TRUE') {
             echo " You have successfully emails writing in DB!";
@@ -92,8 +92,8 @@ class writeInDB extends  DbConnect
     function writeFilesInDB()
     {
 
-        $this -> result = 'INSERT INTO files(id, filename, text) VALUES ("", "' . $this->name . '", "' . $this->text . '")';
-        $queryResult = $this -> conn->query($this -> result);
+        $result = 'INSERT INTO files(id, filename, text) VALUES ("", "' . $this->name . '", "' . $this->text . '")';
+        $queryResult = $this->runQuery($result);
 
         if ($queryResult == 'TRUE') {
             echo "You have successfully file writing in DB!";
