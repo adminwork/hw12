@@ -68,8 +68,7 @@ class writeInDB extends  DbConnect
 
     function __construct()
     {
-        $this->filename = $_POST['name'];
-        $this->email = $_POST['name'];
+        $this->name = $_POST['name'];
         $this->text = $_POST['text'];
         $this->username = $_POST['username'];
 
@@ -80,7 +79,7 @@ class writeInDB extends  DbConnect
 
     function writeEmailsInDB()
     {
-        $this -> result = 'INSERT INTO emails(id, login, text) VALUES ("", "' . $this->email . '", "' . $this->text . '")';
+        $this -> result = 'INSERT INTO emails(id, login, text) VALUES ("", "' . $this->name . '", "' . $this->text . '")';
         $queryResult = $this -> conn->query($this -> result);
 
         if ($queryResult == 'TRUE') {
@@ -93,7 +92,7 @@ class writeInDB extends  DbConnect
     function writeFilesInDB()
     {
 
-        $this -> result = 'INSERT INTO files(id, filename, text) VALUES ("", "' . $this->filename . '", "' . $this->text . '")';
+        $this -> result = 'INSERT INTO files(id, filename, text) VALUES ("", "' . $this->name . '", "' . $this->text . '")';
         $queryResult = $this -> conn->query($this -> result);
 
         if ($queryResult == 'TRUE') {
@@ -110,7 +109,7 @@ if ($_POST['option'] == 'email') {
     $obj->setUsername($username);
     $obj->setEmail($email);
     $obj->run($text);
-    echo "E-mail send";
+    echo "E-mail send!";
     $objregistration = new writeInDB();
     $objregistration->writeEmailsInDB();
 }
@@ -122,7 +121,7 @@ elseif ($_POST['option'] == 'file') {
     $obj->run($text);
     $objregistration = new writeInDB();
     $objregistration->writeFilesInDB();
-    echo "File is created";
+    echo "File is created!";
 }
 else echo "Enter option";
 
