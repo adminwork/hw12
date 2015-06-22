@@ -79,7 +79,7 @@ class writeInDB extends  DbConnect
         $queryResult = $this->runQuery($result);
     }
 
-    function writeInDBB()
+    function writeInDataBase()
     {
         if ($this->nameTables == 'files') {
             $peremen = "filename";
@@ -91,7 +91,7 @@ class writeInDB extends  DbConnect
         if ($queryResult == 'TRUE') {
             echo " You have successfully " . $this->nameTables ." writing in DB!";
         } else {
-            echo "Error! You are emails not writing in DB.</a>";
+            echo "Error! You are " . $this->nameTables ." not writing in DB.</a>";
         }
     }
 }
@@ -104,7 +104,7 @@ if ($_POST['option'] == 'email') {
     $obj->run($text);
     echo "E-mail send!";
     $objregistration = new writeInDB();
-    $objregistration->writeInDBB();
+    $objregistration->writeInDataBase();
 }
 elseif ($_POST['option'] == 'files') {
     $obj = new WorkWithFiles();
@@ -113,7 +113,7 @@ elseif ($_POST['option'] == 'files') {
     $obj->setUsername($username);
     $obj->run($text);
     $objregistration = new writeInDB();
-    $objregistration->writeInDBB();
+    $objregistration->writeInDataBase();
     echo "File is created!";
 }
 else echo "Enter option";
