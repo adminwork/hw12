@@ -1,6 +1,7 @@
 <?php
 
-require_once 'class/send.php';
+require_once 'class/workwithtext.php';
+require_once 'class/writeindb.php';
 
 if ($_POST['option'] == 'email') {
     $obj = new WorkWithEmail();
