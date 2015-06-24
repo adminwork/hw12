@@ -75,12 +75,13 @@ class writeInDB extends  DbConnect
 
         parent:: __construct();
 
-        $result = 'INSERT INTO users(id, username) VALUES ("", "' . $this->username . '")';
-        $queryResult = $this->runQuery($result);
     }
 
     function writeInDataBase()
     {
+        $result = 'INSERT INTO users(id, username) VALUES ("", "' . $this->username . '")';
+        $queryResult = $this->runQuery($result);
+
         if ($this->nameTables == 'files') {
             $peremen = "filename";
         }else {$peremen = "login";}
@@ -96,27 +97,6 @@ class writeInDB extends  DbConnect
     }
 }
 
-if ($_POST['option'] == 'email') {
-    $obj = new WorkWithEmail();
-    $obj->setText($text);
-    $obj->setUsername($username);
-    $obj->setEmail($email);
-    $obj->run($text);
-    echo "E-mail send!";
-    $objregistration = new writeInDB();
-    $objregistration->writeInDataBase();
-}
-elseif ($_POST['option'] == 'files') {
-    $obj = new WorkWithFiles();
-    $obj->setText($text);
-    $obj->setFiles($filename);
-    $obj->setUsername($username);
-    $obj->run($text);
-    $objregistration = new writeInDB();
-    $objregistration->writeInDataBase();
-    echo "File is created!";
-}
-else echo "Enter option";
 
 
 

@@ -1,9 +1,3 @@
-<?php
-
-require_once 'dbconnect.php';
-
-?>
-
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -11,7 +5,7 @@ require_once 'dbconnect.php';
     <title>SELECT</title>
 </head>
 <body>
-<form action="action_push.php" method="post">
+<form action="action_send.php" method="post">
     <p><input placeholder="Username" name="username"></p>
     <p><select name="option">
             <option selected disabled>Option</option>
